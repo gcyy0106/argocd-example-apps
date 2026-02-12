@@ -15,5 +15,6 @@ spec:
     spec:
       containers:
         - image: gcr.m.daocloud.io/google-samples/gb-frontend:v5
+          name: guestbook-ui
           ports:
             - containerPort: 80
