@@ -21,3 +21,21 @@ spec:
   selector:
     app: guestbook-ui
   type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: guestbook-ui-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: guestbook-ui.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: guestbook-ui
+            port:
+              number: 80
