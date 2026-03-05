@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mygoweb
+  namespace: argocd
+  # 关键：添加这个 finalizer 可以确保删除父应用时，子应用及其资源被级联删除 [citation:9]
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/gcyy0106/argocd-example-apps.git
+    targetRevision: HEAD
+    path: mygoweb
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    # 建议子应用启用自动同步
+    automated:
+      prune: true
+      selfHeal: true

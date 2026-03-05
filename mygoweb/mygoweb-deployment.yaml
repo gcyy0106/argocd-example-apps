@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mygoweb
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: mygoweb
+  template:
+    metadata:
+      labels:
+        app: mygoweb
+    spec:
+      containers:
+        - image: docker.io/library/mygoweb:1.0.0
+          name: mygoweb
+          ports:
+            - containerPort: 80
