@@ -26,10 +26,10 @@ spec:
           name: mygoweb
           ports:
             - containerPort: 8080
-		  volumeMounts:
+          volumeMounts:
           - name: config-volume
             mountPath: /app
-	  volumes:
+      volumes:
       - name: config-volume
         configMap:
           name: mygoweb
