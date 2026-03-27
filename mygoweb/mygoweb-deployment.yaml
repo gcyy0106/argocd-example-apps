@@ -22,13 +22,13 @@ spec:
         app: mygoweb
     spec:
       containers:
-        - image: docker.io/library/mygoweb:1.0.1
+        - image: docker.io/library/mygoweb:1.0.2
           name: mygoweb
           ports:
             - containerPort: 8080
           volumeMounts:
           - name: config-volume
-            mountPath: /
+            mountPath: /app
       volumes:
       - name: config-volume
         configMap:
